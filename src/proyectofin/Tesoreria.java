@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Tesoreria {
     
-    int saldoActual;
+    static int saldoActual;
     int perdidasSemanal;
     int gananciasSemanal;
     int prestamo;
