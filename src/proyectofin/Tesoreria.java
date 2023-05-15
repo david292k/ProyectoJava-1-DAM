@@ -5,9 +5,9 @@ import java.util.*;
 public class Tesoreria {
     
     static int saldoActual;
-    int perdidasSemanal;
-    int gananciasSemanal;
-    int prestamo;
+    static int perdidasSemanal;
+    static int gananciasSemanal;
+    static int prestamo;
 
     public Tesoreria() {
         this.saldoActual = 10000;
@@ -36,16 +36,12 @@ public class Tesoreria {
         }
     }
     
-    public void añadirDinero(int cantidad){
-        if(cantidad>0&&cantidad<100000){
+    static public void añadirDinero(int cantidad){
             saldoActual+=cantidad;
-        }
     }
     
-    public void quitarDinero(int cantidad){
-        if(cantidad>0&&saldoActual-cantidad>0){
-            saldoActual+=cantidad;
-        }
+    static public void quitarDinero(int cantidad){
+            saldoActual-=cantidad;
     }
 
     public int getSaldoActual() {

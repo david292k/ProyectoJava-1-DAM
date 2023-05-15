@@ -10,10 +10,10 @@ public class Seguridad extends Servicios {
 
     
     @Override
-    void construir() {
+    public void construir() {
         if(Tesoreria.saldoActual-precio>0){
-            Tesoreria.saldoActual-=precio;
-            seguridad+=15;
+            Tesoreria.perdidasSemanal+=precio;
+            comisaria.add(1);
         }else{
             System.out.println("No tienes dinero suficiente");
         }

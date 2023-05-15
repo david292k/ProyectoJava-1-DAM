@@ -2,8 +2,8 @@ package proyectofin;
 
 public class Ciudadanos {
     
-    int felicidad;
-    int poblacion;
+    static int felicidad;
+    static int poblacion;
     int impuestos;
 
     public Ciudadanos() {
@@ -42,7 +42,7 @@ public class Ciudadanos {
         setFelicidad(valor);
     }
     
-    public void aumentarPoblacion(){
+    static public void aumentarPoblacion(){
         poblacion+=100;
     }
     
@@ -56,12 +56,15 @@ public class Ciudadanos {
         }else{
             valor+=10;
         }
-        
-        setImpuestos(valor);
-        
-        
+        setImpuestos(valor);   
     }
-
+    
+    public void pagarImpuesto(){
+        int  valor;
+        
+        Tesoreria.gananciasSemanal+=((impuestos*poblacion)/10);
+    }
+    
     public int getFelicidad() {
         return felicidad;
     }

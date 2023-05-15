@@ -1,9 +1,14 @@
 package proyectofin;
 
+import java.util.*;
+
 public abstract class Servicios {
     
-    final int precio=1000;
+    static int precio=1000;
     int gasto=0;
     
-    abstract void construir();
+    public abstract void construir();
+    
+    static ArrayList <Integer> hospital = new ArrayList();
+    static ArrayList <Integer> comisaria = new ArrayList();
 }

@@ -10,10 +10,10 @@ public class Salud extends Servicios {
 
     
     @Override
-    void construir() {
+    public void construir() {
         if(Tesoreria.saldoActual-precio>0){
-            Tesoreria.saldoActual-=precio;
-            salud+=15;
+            Tesoreria.perdidasSemanal+=precio;
+            hospital.add(1);
         }else{
             System.out.println("No tienes dinero suficiente");
         }
