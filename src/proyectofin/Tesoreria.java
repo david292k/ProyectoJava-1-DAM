@@ -21,7 +21,7 @@ public class Tesoreria {
         return "Tesoreria{" + "saldoActual=" + saldoActual + ", perdidasSemanal=" + perdidasSemanal + ", gananciasSemanal=" + gananciasSemanal + ", prestamo=" + prestamo + '}';
     }
     
-    public void pedirPrestamo(int cantidad){
+    static public void pedirPrestamo(int cantidad){
         if(cantidad>0&&cantidad<100000){
             saldoActual+=cantidad;
             prestamo+=cantidad;
@@ -30,9 +30,12 @@ public class Tesoreria {
         }
     }
     
-    public void pagarPrestamo(int cantidad){
+    static public void pagarPrestamo(int cantidad){
         if(cantidad>0&&cantidad<100000){
-            saldoActual+=cantidad;
+            saldoActual-=cantidad;
+            prestamo-=cantidad;
+        }else{
+            System.out.println("No tienes tanto dinero para devolver");
         }
     }
     

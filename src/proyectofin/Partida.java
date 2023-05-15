@@ -91,4 +91,73 @@ public class Partida {
     }
     
     
+     public void juego(){
+        Scanner sc = new Scanner(System.in);
+
+        int n;
+        
+        System.out.println("----------------------------------------------------------------------");
+        System.out.println("-------------------------- Sim Cytis 69 ------------------------------");
+        System.out.println("----------------------------------------------------------------------");
+        
+        
+        do{
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 1/ Banco ---------------------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 2/ Avanzar semana ------------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 3/ Construir servicios -------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 4/ Informacion sobre tu ciudad -----------------");
+            System.out.println("----------------------------------------------------------------------");
+            n=sc.nextInt();
+            
+            switch (n) {
+                case 1:            
+                    Partida.banco();
+                    break;
+                case 2:
+                    Partida.avanzar();
+                    break;
+                case 4:
+                    Partida.muestra();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            
+        }while(n!=5);
+        
+         
+    }
+        static public void banco(){
+            Scanner sc = new Scanner(System.in);
+            int m;
+            int cantidad;
+            
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("------------------------ Banco ---------------------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 1/ Pedir prestamo ------------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 2/ Devolver prestamo ---------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.print("Opcion -> ");
+            m=sc.nextInt();
+            
+            switch(m) {
+                case 1:
+                    System.out.println("¿Cuanto dinero quieres pedir prestado?");
+                    cantidad=sc.nextInt();
+                    Tesoreria.pedirPrestamo(cantidad);
+                    break;
+                case 2:
+                    System.out.println("¿Cuanto dinero quieres devolver?");
+                    cantidad=sc.nextInt();
+                    Tesoreria.pagarPrestamo(cantidad);
+                    break;
+            }
+        }
+    
 }
