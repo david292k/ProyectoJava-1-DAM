@@ -129,8 +129,6 @@ public class Partida {
         
         do{
             
-            boolean avanz=true;
-            
             System.out.println("----------------------------------------------------------------------");
             System.out.println("--------------------- 1/ Banco ---------------------------------------");
             System.out.println("----------------------------------------------------------------------");
@@ -151,6 +149,7 @@ public class Partida {
                     break;
                 case 2:
                     Partida.avanzar();
+                    Partida.reiniciarSemana();
                     break;
                 case 3:
                     Partida.construir();
@@ -161,14 +160,8 @@ public class Partida {
                 default:
                     if(n!=5){
                         System.out.println("Numero incorrecto. Ponga una opción válida");
-                        avanz=false;
                     }
                     
-            }
-            
-            if(avanz){
-                Partida.avanzar();
-                Partida.reiniciarSemana();
             }
             
         }while(n!=5);
