@@ -62,7 +62,7 @@ public class Ciudadanos {
     public void pagarImpuesto(){
         int  valor;
         
-        Tesoreria.gananciasSemanal+=((impuestos*poblacion)/10);
+        Tesoreria.gananciasSemanal+=((impuestos*poblacion)/50);
     }
     
     public int getFelicidad() {

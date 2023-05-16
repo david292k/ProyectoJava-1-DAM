@@ -25,6 +25,8 @@ public class Partida {
         System.out.println("Seguridad: "+Seguridad.seguridad);
         System.out.println("Poblacion: "+Ciudadanos.poblacion);
         System.out.println("Felicidad: "+Ciudadanos.felicidad);
+        System.out.println("Comisarias: "+Servicios.comisaria.size());
+        System.out.println("Comisarias: "+Servicios.hospital.size());
     }
     
     static public void reiniciarSemana(){
@@ -90,6 +92,30 @@ public class Partida {
         seguridad.construir();
     }
     
+    static public void construir(){
+        Scanner sc = new Scanner(System.in);
+        int n;
+        
+        System.out.println("----------------------------------------------------------------------");
+        System.out.println("--------------------- 1/ Construir comisaria -------------------------");
+        System.out.println("----------------------------------------------------------------------");
+        System.out.println("--------------------- 2/ Construir bomberos -------------------------");
+        System.out.println("----------------------------------------------------------------------");
+        System.out.print("Opcion -> ");      
+        n=sc.nextInt();
+        
+        switch (n) {
+            case 1:
+                Partida.contruirComisaria();
+                break;
+            case 2:
+                Partida.contruirHospital();
+                break;
+            default:
+                System.out.println("Numero incorrecto");
+        }
+    }
+    
     
      public void juego(){
         Scanner sc = new Scanner(System.in);
@@ -102,6 +128,9 @@ public class Partida {
         
         
         do{
+            
+            boolean avanz=true;
+            
             System.out.println("----------------------------------------------------------------------");
             System.out.println("--------------------- 1/ Banco ---------------------------------------");
             System.out.println("----------------------------------------------------------------------");
@@ -111,6 +140,9 @@ public class Partida {
             System.out.println("----------------------------------------------------------------------");
             System.out.println("--------------------- 4/ Informacion sobre tu ciudad -----------------");
             System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 5/ Salir del juego -----------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.print("Opcion -> ");
             n=sc.nextInt();
             
             switch (n) {
@@ -120,11 +152,23 @@ public class Partida {
                 case 2:
                     Partida.avanzar();
                     break;
+                case 3:
+                    Partida.construir();
+                    break;
                 case 4:
                     Partida.muestra();
                     break;
                 default:
-                    throw new AssertionError();
+                    if(n!=5){
+                        System.out.println("Numero incorrecto. Ponga una opción válida");
+                        avanz=false;
+                    }
+                    
+            }
+            
+            if(avanz){
+                Partida.avanzar();
+                Partida.reiniciarSemana();
             }
             
         }while(n!=5);
