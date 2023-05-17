@@ -11,7 +11,7 @@ public class Seguridad extends Servicios {
     
     @Override
     public void construir() {
-        if(Tesoreria.saldoActual-precio>0){
+        if(Tesoreria.saldoActual-precio>=0){
             Tesoreria.perdidasSemanal+=precio;
             comisaria.add(1);
         }else{

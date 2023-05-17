@@ -4,7 +4,7 @@ import java.util.*;
 
 public abstract class Servicios {
     
-    static int precio=1000;
+    static int precio=10000;
     int gasto=0;
     
     public abstract void construir();

@@ -21,7 +21,7 @@ public class Ciudadanos {
             valor+=40;
         }else if(Salud.salud>=50&&Salud.salud<75){
             valor+=30;
-        }else if(Salud.salud>=25&&Salud.salud<50){
+        }else if(Salud.salud>25&&Salud.salud<50){
             valor+=20;
         }else{
             valor+=0;
@@ -33,7 +33,7 @@ public class Ciudadanos {
             valor+=40;
         }else if(Seguridad.seguridad>=50&&Seguridad.seguridad<75){
             valor+=30;
-        }else if(Seguridad.seguridad>=25&&Seguridad.seguridad<50){
+        }else if(Seguridad.seguridad>25&&Seguridad.seguridad<50){
             valor+=20;
         }else{
             valor+=0;

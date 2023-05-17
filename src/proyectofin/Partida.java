@@ -44,6 +44,8 @@ public class Partida {
         ciudadanos.pagarImpuesto();
         Tesoreria.quitarDinero(Tesoreria.perdidasSemanal);
         Tesoreria.añadirDinero(Tesoreria.gananciasSemanal);
+        Partida.reiniciarSemana();
+        Tesoreria.devolverPrestamo();
     }
     
     static public void gastoSalud(){
@@ -62,7 +64,7 @@ public class Partida {
     
     static public void calcularSeguridad(){
         if(Servicios.comisaria.size()-1>Math.round(Ciudadanos.poblacion/1000)){
-            Seguridad.seguridad=100;
+            Seguridad.seguridad=100;                                                                                                                                                                                                          
         }else if(Servicios.comisaria.size()-1== Math.round(Ciudadanos.poblacion/1000)){
             Seguridad.seguridad=75;
         }else if(Servicios.comisaria.size()-1< Math.round(Ciudadanos.poblacion/1000)&&Servicios.hospital.size()>0){
@@ -97,9 +99,13 @@ public class Partida {
         int n;
         
         System.out.println("----------------------------------------------------------------------");
+        System.out.println("--------------------- (Cuestan las 2 10.000€) ------------------------");
+        System.out.println("----------------------------------------------------------------------");
         System.out.println("--------------------- 1/ Construir comisaria -------------------------");
         System.out.println("----------------------------------------------------------------------");
-        System.out.println("--------------------- 2/ Construir bomberos -------------------------");
+        System.out.println("--------------------- 2/ Construir hospital --------------------------");
+        System.out.println("----------------------------------------------------------------------");
+        System.out.println("--------------------- 3/ Salir ---------------------------------------");
         System.out.println("----------------------------------------------------------------------");
         System.out.print("Opcion -> ");      
         n=sc.nextInt();
@@ -107,12 +113,14 @@ public class Partida {
         switch (n) {
             case 1:
                 Partida.contruirComisaria();
+                Partida.avanzar();
                 break;
             case 2:
                 Partida.contruirHospital();
+                Partida.avanzar();
                 break;
-            default:
-                System.out.println("Numero incorrecto");
+            case 3:
+                break;
         }
     }
     
@@ -129,6 +137,11 @@ public class Partida {
         
         do{
             
+            
+            
+            
+            System.out.println("--------------------- Semana: "+Tiempo.semana+", Mes: "+Tiempo.mes+", Año: "+Tiempo.anyo+" -------------------");
+            System.out.println("----------------------------------------------------------------------");
             System.out.println("----------------------------------------------------------------------");
             System.out.println("--------------------- 1/ Banco ---------------------------------------");
             System.out.println("----------------------------------------------------------------------");
@@ -149,7 +162,6 @@ public class Partida {
                     break;
                 case 2:
                     Partida.avanzar();
-                    Partida.reiniciarSemana();
                     break;
                 case 3:
                     Partida.construir();
@@ -180,6 +192,8 @@ public class Partida {
             System.out.println("----------------------------------------------------------------------");
             System.out.println("--------------------- 2/ Devolver prestamo ---------------------------");
             System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 3/ Salir ---------------------------------------");
+            System.out.println("----------------------------------------------------------------------");
             System.out.print("Opcion -> ");
             m=sc.nextInt();
             
@@ -193,6 +207,8 @@ public class Partida {
                     System.out.println("¿Cuanto dinero quieres devolver?");
                     cantidad=sc.nextInt();
                     Tesoreria.pagarPrestamo(cantidad);
+                    break;
+                case 3:
                     break;
             }
         }

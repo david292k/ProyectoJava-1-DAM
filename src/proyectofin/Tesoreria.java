@@ -39,6 +39,22 @@ public class Tesoreria {
         }
     }
     
+    
+    static public void devolverPrestamo(){
+        int porcentaje;
+        
+        porcentaje = prestamo * 10 / 100;
+        
+        perdidasSemanal+=porcentaje;
+        
+        if(prestamo-porcentaje>=0){
+            prestamo-=porcentaje;
+        }else{
+            prestamo=0;
+        }
+        
+    }
+        
     static public void añadirDinero(int cantidad){
             saldoActual+=cantidad;
     }
@@ -70,15 +86,7 @@ public class Tesoreria {
     public void setGananciasSemanal(int gananciasSemanal) {
         this.gananciasSemanal = gananciasSemanal;
     }
-
-    public int getPrestamo() {
-        return prestamo;
-    }
-
-    public void setPrestamo(int prestamo) {
-        this.prestamo = prestamo;
-    }
     
-    
+
     
 }

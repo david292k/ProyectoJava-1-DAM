@@ -11,7 +11,7 @@ public class Salud extends Servicios {
     
     @Override
     public void construir() {
-        if(Tesoreria.saldoActual-precio>0){
+        if(Tesoreria.saldoActual-precio>=0){
             Tesoreria.perdidasSemanal+=precio;
             hospital.add(1);
         }else{
