@@ -9,6 +9,8 @@ public class Partida {
     static private Seguridad seguridad;
     static private Ciudadanos ciudadanos;
     static private Tiempo tiempo;
+    
+    static Random numAleatorio = new Random();
 
     public Partida() {
         this.tesoreria = new Tesoreria();
@@ -26,7 +28,7 @@ public class Partida {
         System.out.println("Poblacion: "+Ciudadanos.poblacion);
         System.out.println("Felicidad: "+Ciudadanos.felicidad);
         System.out.println("Comisarias: "+Servicios.comisaria.size());
-        System.out.println("Comisarias: "+Servicios.hospital.size());
+        System.out.println("Hospitales: "+Servicios.hospital.size());
     }
     
     static public void reiniciarSemana(){
@@ -133,13 +135,14 @@ public class Partida {
         System.out.println("----------------------------------------------------------------------");
         System.out.println("-------------------------- Sim Cytis 69 ------------------------------");
         System.out.println("----------------------------------------------------------------------");
-        
+        System.out.println("----------------------------------------------------------------------");      
+        Partida.reglas();
+        System.out.println("-------------------------- Let's Goooo!! -----------------------------");
+        System.out.println("----------------------------------------------------------------------");      
         
         do{
             
-            
-            
-            
+            System.out.println("----------------------------------------------------------------------");
             System.out.println("--------------------- Semana: "+Tiempo.semana+", Mes: "+Tiempo.mes+", Año: "+Tiempo.anyo+" -------------------");
             System.out.println("----------------------------------------------------------------------");
             System.out.println("----------------------------------------------------------------------");
@@ -162,6 +165,8 @@ public class Partida {
                     break;
                 case 2:
                     Partida.avanzar();
+                    Partida.eventosSeguridad();
+                    Partida.eventosSalud();
                     break;
                 case 3:
                     Partida.construir();
@@ -174,6 +179,11 @@ public class Partida {
                         System.out.println("Numero incorrecto. Ponga una opción válida");
                     }
                     
+            }
+            
+            if(Partida.derrota()){
+                System.out.println("Has perdido :(");
+                n=5;
             }
             
         }while(n!=5);
@@ -213,4 +223,79 @@ public class Partida {
             }
         }
     
+        static public void reglas(){
+            
+            System.out.println("--------------------- Reglas del juego: ------------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 1) El objetivo es superar la  ------------------");
+            System.out.println("------------------------ población de 10,000 con ---------------------");
+            System.out.println("------------------------ 100 de felicidad y superar ------------------");
+            System.out.println("------------------------ población de 1.000.000€. --------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 2) Si obtienes un saldo negativo  --------------");
+            System.out.println("------------------------ habrás perdido. -----------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("--------------------- 3) Si tienes un bajo nivel en  -----------------");
+            System.out.println("------------------------ tus servicios pueden haber ------------------");
+            System.out.println("------------------------ diferentes catastrofes. ---------------------");
+            System.out.println("----------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------");
+        }
+        
+        static public boolean derrota(){
+            boolean comprobador=false;
+            
+            if(Tesoreria.saldoActual<0){
+                comprobador=true;
+            }
+            return comprobador;
+        }
+        
+        static public void eventosSeguridad(){
+            
+            int probabilidad=numAleatorio.nextInt(100-1);
+            
+            if(Seguridad.seguridad==75){
+                if(probabilidad<10&&probabilidad>0){
+                    System.out.println("Han sucedido actos bandalicos, las reparaciones han costado a la banca 5000€");
+                    Tesoreria.quitarDinero(5000);
+                }
+            }else if(Seguridad.seguridad==50){
+                if(probabilidad<50&&probabilidad>30){
+                    System.out.println("Una banda organizada ha atracado la tesoreria. Han robado 7500€");
+                    Tesoreria.quitarDinero(7500);
+                }
+            }else if(Seguridad.seguridad==25){
+                if(probabilidad<100&&probabilidad>70){
+                    System.out.println("La nueva casa de papel. Un grupo de enmascarados han robado 9000€");
+                    Tesoreria.quitarDinero(9000);
+                }
+            }
+
+        }
+        
+        static public void eventosSalud(){
+            
+            int probabilidad=numAleatorio.nextInt(100-1);
+            
+            if(Salud.salud==75){
+                if(probabilidad<10&&probabilidad>0){
+                    System.out.println("Hay una epidemia de gripe. Ha muerto el 30% de la población");
+                    Ciudadanos.poblacion*=0.70;
+                }
+            }else if(Salud.salud==50){
+                if(probabilidad<50&&probabilidad>30){
+                    System.out.println("Por culpa de un residuo radiactivo ha muerto un 50% de la poblacion");
+                    Ciudadanos.poblacion*=0.50;
+                }
+            }else if(Salud.salud==25){
+                if(probabilidad<100&&probabilidad>70){
+                    System.out.println("Ha llegado el Covid-19. Solo ha sobrevivido el 20% de la población");
+                    Ciudadanos.poblacion*=0.20;
+                }
+            }
+
+        }
 }

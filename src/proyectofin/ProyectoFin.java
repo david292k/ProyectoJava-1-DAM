@@ -9,10 +9,13 @@ public class ProyectoFin {
                 
         Partida p1 =  new Partida();
         
+
+                
+
         p1.juego();
+                        /*
         
         
-        /*
         Partida.muestra();
         System.out.println("-------------------------------");
         Partida.contruirComisaria();

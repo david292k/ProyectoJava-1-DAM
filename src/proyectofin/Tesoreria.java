@@ -43,7 +43,7 @@ public class Tesoreria {
     static public void devolverPrestamo(){
         int porcentaje;
         
-        porcentaje = prestamo * 10 / 100;
+        porcentaje = prestamo * 5 / 100;
         
         perdidasSemanal+=porcentaje;
         
