@@ -186,6 +186,11 @@ public class Partida {
                 n=5;
             }
             
+            if(Partida.ganar()){
+                System.out.println("Has ganadooo!!! :)");
+                n=5;
+            }
+            
         }while(n!=5);
         
          
@@ -259,18 +264,18 @@ public class Partida {
             
             if(Seguridad.seguridad==75){
                 if(probabilidad<10&&probabilidad>0){
-                    System.out.println("Han sucedido actos bandalicos, las reparaciones han costado a la banca 5000€");
-                    Tesoreria.quitarDinero(5000);
+                    System.out.println("Han sucedido actos bandalicos, las reparaciones han costado a la banca 4000€");
+                    Tesoreria.quitarDinero(4000);
                 }
             }else if(Seguridad.seguridad==50){
                 if(probabilidad<50&&probabilidad>30){
-                    System.out.println("Una banda organizada ha atracado la tesoreria. Han robado 7500€");
-                    Tesoreria.quitarDinero(7500);
+                    System.out.println("Una banda organizada ha atracado la tesoreria. Han robado 6000€");
+                    Tesoreria.quitarDinero(6000);
                 }
             }else if(Seguridad.seguridad==25){
                 if(probabilidad<100&&probabilidad>70){
-                    System.out.println("La nueva casa de papel. Un grupo de enmascarados han robado 9000€");
-                    Tesoreria.quitarDinero(9000);
+                    System.out.println("La nueva casa de papel. Un grupo de enmascarados han robado 8000€");
+                    Tesoreria.quitarDinero(8000);
                 }
             }
 
@@ -297,5 +302,15 @@ public class Partida {
                 }
             }
 
+        }
+        
+        static public boolean ganar(){
+            boolean victoria=false;
+            
+            if(Ciudadanos.felicidad==100&&Ciudadanos.poblacion>=10000&&Tesoreria.saldoActual>1000000){
+                victoria=true;
+            }
+            
+            return victoria;
         }
 }
